@@ -9,7 +9,7 @@ body {
   position: absolute;
   top: 0;
   width: 50%;
-  height: 50%;
+  height: 100vh;
 }
 
 #map_2 {
@@ -17,10 +17,10 @@ body {
   top: 0;
   right: 0;
   width: 50%;
-  height: 50%;
+  height: 100vh;
 }
 
-#map_3 {
+/* #map_3 {
   position: absolute;
   bottom: 0;
   width: 50%;
@@ -33,7 +33,7 @@ body {
   right: 0;
   width: 50%;
   height: 50%;
-}
+} */
 
 /* Fadenkreuze Position */
 .ch-image {
@@ -45,15 +45,15 @@ body {
 
 #cross_1 {
   left: 25%;
-  top: 25%;
+  top: 50%;
 }
 
 #cross_2 {
   left: 75%;
-  top: 25%;
+  top: 50%;
 }
 
-#cross_3 {
+/* #cross_3 {
   left: 25%;
   top: 75%;
 }
@@ -61,16 +61,15 @@ body {
 #cross_4 {
   left: 75%;
   top: 75%;
-}
+} */
 
 /* Suchfunktion */
-.mapboxgl-ctrl-top-right {
+/* .mapboxgl-ctrl-top-right {
   width: auto;
 }
 
 .mapboxgl-ctrl-geocoder {
   width: 0px;
-  height: 30px;
   min-width: 30px;
   max-width: 500px;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
@@ -115,7 +114,7 @@ body {
 
 .mapboxgl-ctrl-geocoder:hover {
   width: 100%;
-}
+} */
 
 /* Vollbild-Menü */
 .overlay {
