@@ -1,13 +1,11 @@
 {
-  "center": [6.391263, 51.258812],
+  "center": [-0.01988431810519735, 51.451668516553084],
   "zoom": 16,
   "map_1": {
-    "layer": "NRW Luftbild Farbe",
-    "overlay": "NRW vDOP Farbe",
-    "overlay_opacity": 1
+    "layer": ""
   },
   "map_2": {
-    "layer": "OSM Mapnik"
+    "layer": ""
   },
   "map_3": {
     "layer": "Kreis Viersen ALKIS",
