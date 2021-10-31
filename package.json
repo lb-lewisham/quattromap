@@ -1,11 +1,13 @@
 {
   "name": "quattromap",
+  "homepage": "https://lb-lewisham.github.io/quattromap",
   "description": "Compare up to 4 maps at once",
   "version": "1.5.0",
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
