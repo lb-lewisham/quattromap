@@ -265,15 +265,40 @@ map_1.on("load", () => {
   });
 
   map_1.addLayer({
-    id: "map-1",
-    type: "line",
+    id: "map_1",
+    type: "fill",
+    paint: {
+      "fill-opacity": 0,
+    },
     source: "map_1",
+  });
+  map_1.addLayer({
+    id: "map_1_line",
+    type: "line",
+    paint: {
+      "line-color": "black",
+    },
+    source: "map_1",
+  });
+
+  const popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false,
+  });
+  map_1.on("mousemove", "map_1", (e) => {
+    map_1.getCanvas().style.cursor = "pointer";
+    const coordinates = e.lngLat;
+    const description = e.features[0].properties.name;
+    popup.setLngLat(coordinates).setHTML(description).addTo(map_1);
+  });
+  map_1.on("mouseleave", "map_1", () => {
+    map_1.getCanvas().style.cursor = "";
+    popup.remove();
   });
 });
 
 var map_2 = new mapboxgl.Map({
   container: "map_2",
-  style: default_style,
   style: "mapbox://styles/mapbox/dark-v8",
   zoom: config.zoom,
   center: config.center,
@@ -294,12 +319,35 @@ map_2.on("load", () => {
   });
 
   map_2.addLayer({
-    id: "map_2-layer",
-    type: "line",
+    id: "map_2",
+    type: "fill",
+    paint: {
+      "fill-opacity": 0,
+    },
     source: "map_2",
+  });
+  map_2.addLayer({
+    id: "map_2_line",
+    type: "line",
     paint: {
       "line-color": "lime",
     },
+    source: "map_2",
+  });
+
+  const popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false,
+  });
+  map_2.on("mousemove", "map_2", (e) => {
+    map_2.getCanvas().style.cursor = "pointer";
+    const coordinates = e.lngLat;
+    const description = e.features[0].properties.Name;
+    popup.setLngLat(coordinates).setHTML(description).addTo(map_2);
+  });
+  map_2.on("mouseleave", "map_2", () => {
+    map_2.getCanvas().style.cursor = "";
+    popup.remove();
   });
 });
 
@@ -411,12 +459,15 @@ map_1.addControl(
     mapboxgl: mapboxgl,
     types: "region,postcode,district,place,locality,neighborhood,address",
     countries: "gb",
-    bbox: [-0.07511143283733918, 51.41353531711062, 0.039041594357772665, 51.49353306666282],
+    bbox: [
+      -0.07511143283733918,
+      51.41353531711062,
+      0.039041594357772665,
+      51.49353306666282,
+    ],
     filter: function (item) {
       return item.context.some((i) => {
-        return (
-          i.id.split(".").shift() === "locality" && i.text === "Lewisham"
-        );
+        return i.id.split(".").shift() === "locality" && i.text === "Lewisham";
       });
     },
   }),
@@ -434,6 +485,31 @@ map_1.addControl(
   }),
   "top-left"
 );
+
+let fullScreenChange;
+
+if ("onfullscreenchange" in window.document) {
+  fullScreenChange = "fullscreenchange";
+} else if ("onmozfullscreenchange" in window.document) {
+  fullScreenChange = "mozfullscreenchange";
+} else if ("onwebkitfullscreenchange" in window.document) {
+  fullScreenChange = "webkitfullscreenchange";
+} else if ("onmsfullscreenchange" in window.document) {
+  fullScreenChange = "MSFullscreenChange";
+}
+
+function onFullscreenChange() {
+  if (window.innerHeight === screen.height) {
+    map_1.scrollZoom.enable();
+    map_2.scrollZoom.enable();
+  } else {
+    map_1.scrollZoom.disable();
+    map_2.scrollZoom.disable();
+  }
+}
+
+window.document.addEventListener(fullScreenChange, onFullscreenChange);
+
 map_1.addControl(
   new mapboxgl.GeolocateControl({
     positionOptions: {
