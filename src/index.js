@@ -11,6 +11,8 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import config from "./config.json";
 import LZString from "lz-string";
+import light from './os_open_zoomstack_-_light.json'
+import night from './os_open_zoomstack_-_night.json'
 
 // access Token
 mapboxgl.accessToken =
@@ -244,8 +246,8 @@ config.layer.forEach(function (item) {
 
 var map_1 = new mapboxgl.Map({
   container: "map_1",
-  // style: default_style,
-  style: "mapbox://styles/mapbox/light-v8",
+  // style: "mapbox://styles/mapbox/light-v8",
+  style: light,
   zoom: config.zoom,
   center: config.center,
   pitchWithRotate: false,
@@ -299,7 +301,8 @@ map_1.on("load", () => {
 
 var map_2 = new mapboxgl.Map({
   container: "map_2",
-  style: "mapbox://styles/mapbox/dark-v8",
+  // style: "mapbox://styles/mapbox/dark-v8",
+  style: night,
   zoom: config.zoom,
   center: config.center,
   pitchWithRotate: false,
