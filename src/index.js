@@ -16,7 +16,7 @@ import night from './os_open_zoomstack_-_night.json'
 
 // access Token
 mapboxgl.accessToken =
-  "pk.eyJ1IjoidHR2aWUiLCJhIjoiY2pzeWtpbnlmMTQ2bDQ0cHBmMG83cDc2cCJ9.PbFiXjCzENBncs0mErVLHQ";
+  "";
 
 // settings for layer and overlays
 var settings = {};
