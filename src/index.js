@@ -254,7 +254,7 @@ var allMapsLoaded = [false, false, false, false];
 // sync map windows
 syncMaps(map_1, map_2 /*, map_3, map_4*/);
 
-map_1.scrollZoom.disable();
+// map_1.scrollZoom.disable();
 map_1.addControl(
   new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
@@ -302,11 +302,11 @@ if ("onfullscreenchange" in window.document) {
 
 function onFullscreenChange() {
   if (window.innerHeight === screen.height) {
-    map_1.scrollZoom.enable();
-    map_2.scrollZoom.enable();
+//     map_1.scrollZoom.enable();
+//     map_2.scrollZoom.enable();
   } else {
-    map_1.scrollZoom.disable();
-    map_2.scrollZoom.disable();
+//     map_1.scrollZoom.disable();
+//     map_2.scrollZoom.disable();
   }
 }
 
@@ -321,7 +321,7 @@ map_1.addControl(
   }),
   "top-left"
 );
-map_2.scrollZoom.disable();
+// map_2.scrollZoom.disable();
 // before.addControl(new mapboxgl.NavigationControl({showCompass: false}), 'top-left');
 
 // visibility of map controls
